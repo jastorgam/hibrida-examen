@@ -1,0 +1,31 @@
+<ion-item>
+  <ion-img
+    slot="start"
+    [src]="post.image ?? '/assets/images/transparent.png'"
+  ></ion-img>
+  <ion-label [id]="post.id">
+    <h5>{{ post.title }}</h5>
+  </ion-label>
+
+  <ion-alert
+    [trigger]="post.id"
+    [header]="post.title"
+    [message]="post.description"
+    [buttons]="alertButton"
+  ></ion-alert>
+
+  <!-- <ion-popover [trigger]="post.id" triggerAction="hover">
+    <ng-template>
+      <ion-title>{{ post.title }}</ion-title>
+      <ion-content class="ion-padding">{{ post.description }}</ion-content>
+    </ng-template>
+  </ion-popover> -->
+  <ion-label class="label-date">{{
+    post.creationDate | date : "yyyy-MM-dd"
+  }}</ion-label>
+  <ion-icon
+    aria-hidden="true"
+    name="trash-outline"
+    (click)="onDeletePost(post)"
+  ></ion-icon>
+</ion-item>

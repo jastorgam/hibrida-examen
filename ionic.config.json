@@ -1,0 +1,7 @@
+{
+  "name": "peor-es-nada",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

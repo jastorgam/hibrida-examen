@@ -1,0 +1,57 @@
+<ion-list>
+  <form [formGroup]="postForm" (ngSubmit)="onAddPost()">
+    <ion-item
+      [class.invalid]="
+        postForm.get('title')?.invalid && postForm.get('title')?.touched
+      "
+    >
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input type="text" formControlName="title" label=""></ion-input>
+    </ion-item>
+    <ion-item
+      *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched"
+    >
+      <ion-text color="danger">
+        Título debe tener al menos 5 caracteres.
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="takePhoto()">
+        <ion-icon
+          aria-hidden="true"
+          name="camera-outline"
+          class="ion-padding-end"
+        ></ion-icon>
+        <ion-label>Tomar Fotografia </ion-label>
+      </ion-button>
+
+      <ion-img slot="end" [src]="image"></ion-img>
+    </ion-item>
+
+    <ion-item
+      [class.invalid]="
+        postForm.get('description')?.invalid &&
+        postForm.get('description')?.touched
+      "
+    >
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea formControlName="description" label=""></ion-textarea>
+    </ion-item>
+    <ion-item
+      *ngIf="
+        postForm.get('description')?.invalid &&
+        postForm.get('description')?.touched
+      "
+    >
+      <ion-text color="danger">
+        Descripción debe tener al menos 20 caracteres.
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-button type="submit" [disabled]="!postForm.valid"
+        >+ Agregar</ion-button
+      >
+    </ion-item>
+  </form>
+</ion-list>
